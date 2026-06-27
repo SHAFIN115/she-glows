@@ -23,15 +23,15 @@ const contacts = [
   {
     icon: "💬",
     title: "WhatsApp",
-    sub: "+880 17XX-XXXXXX · Fastest reply",
-    href: "https://wa.me/8801700000000",
+    sub: "+880 1577-677921 · Fastest reply",
+    href: "https://wa.me/8801577677921",
     bg: "#E8F5E9",
   },
   {
     icon: "📘",
     title: "Facebook Page",
-    sub: "fb.com/SheGlowsOfficial",
-    href: "https://facebook.com",
+    sub: "facebook.com/SheGlowsOfficial",
+    href: "https://www.facebook.com/profile.php?id=61590652657063",
     bg: "#E3F2FD",
   },
   {

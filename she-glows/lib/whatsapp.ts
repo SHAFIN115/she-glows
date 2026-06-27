@@ -16,6 +16,6 @@ Price: ৳${price.toLocaleString()} × ${qty} = *৳${total.toLocaleString()}*
 
 Please confirm availability and delivery details. Thank you!`;
 
-  const phone = "8801700000000"; // replace with real number
+  const phone = "8801577677921";
   return `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
 }
