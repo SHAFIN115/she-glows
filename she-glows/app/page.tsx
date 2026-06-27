@@ -1,13 +1,44 @@
+"use client";
+
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { products, categories } from "@/data/products";
+import { supabase } from "@/lib/supabase";
 import ProductCard from "@/components/ProductCard";
 import Footer from "@/components/Footer";
 
-const featured = products.slice(0, 4);
-const bestSellers = products.filter((p) =>
-  ["Bestseller", "Fan Favorite", "Dermatologist Pick"].includes(p.badge)
-);
+interface Product {
+  id: string;
+  name: string;
+  slug: string;
+  price: number;
+  category: string;
+  badge: string;
+  tags: string[];
+  stars: number;
+  review_count: number;
+  short_desc: string;
+  description: string;
+  image_url: string;
+  in_stock: boolean;
+}
+
+// Categories for the homepage
+const categories = [
+  { label: "Skincare", emoji: "🧴" },
+  { label: "Sunscreen", emoji: "☀️" },
+  { label: "Hair Care", emoji: "💆" },
+  { label: "Makeup", emoji: "💄" },
+  { label: "Lip Care", emoji: "💋" },
+  { label: "Eye Care", emoji: "👁️" },
+];
+
+const trustBadges = [
+  { icon: "✅", title: "100% Original", sub: "Hologram verified" },
+  { icon: "🚚", title: "Fast Delivery", sub: "1–2 days in Dhaka" },
+  { icon: "💳", title: "bKash & COD", sub: "Easy payment" },
+  { icon: "🔄", title: "Easy Returns", sub: "7-day return policy" },
+];
 
 const reviews = [
   {
@@ -36,14 +67,43 @@ const reviews = [
   },
 ];
 
-const trustBadges = [
-  { icon: "✅", title: "100% Original", sub: "Hologram verified" },
-  { icon: "🚚", title: "Fast Delivery", sub: "1–2 days in Dhaka" },
-  { icon: "💳", title: "bKash & COD", sub: "Easy payment" },
-  { icon: "🔄", title: "Easy Returns", sub: "7-day return policy" },
-];
-
 export default function HomePage() {
+  const [products, setProducts] = useState<Product[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    async function loadProducts() {
+      try {
+        const { data, error } = await supabase
+          .from("products")
+          .select("*")
+          .eq("in_stock", true)
+          .order("created_at", { ascending: false })
+          .limit(8);
+
+        if (error) {
+          console.error("Error loading products:", error);
+          setProducts([]);
+        } else {
+          setProducts(data || []);
+        }
+      } catch (err) {
+        console.error("Failed to load products:", err);
+        setProducts([]);
+      } finally {
+        setLoading(false);
+      }
+    }
+
+    loadProducts();
+  }, []);
+
+  // Separate products for sections
+  const featured = products.slice(0, 4);
+  const bestSellers = products.filter((p) =>
+    ["Bestseller", "Fan Favorite", "Dermatologist Pick"].includes(p.badge)
+  ).slice(0, 4);
+
   return (
     <div style={{ fontFamily: "inherit", color: "#1a1a1a" }}>
       
@@ -122,15 +182,20 @@ export default function HomePage() {
             }}>
               🛍 Shop now
             </Link>
-            <Link href="/contact" style={{
-              display: "inline-flex", alignItems: "center", gap: 8,
-              background: "#fff", color: "#c2185b",
-              border: "1.5px solid #f8bbd0",
-              padding: "14px 24px", borderRadius: 30,
-              fontSize: 15, fontWeight: 600, textDecoration: "none",
-            }}>
+            <a
+              href="https://wa.me/8801577677921?text=Hi! I want to place an order."
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{
+                display: "inline-flex", alignItems: "center", gap: 8,
+                background: "#fff", color: "#c2185b",
+                border: "1.5px solid #f8bbd0",
+                padding: "14px 24px", borderRadius: 30,
+                fontSize: 15, fontWeight: 600, textDecoration: "none",
+              }}
+            >
               💬 Order on WhatsApp
-            </Link>
+            </a>
           </div>
 
           {/* social proof */}
@@ -270,13 +335,21 @@ export default function HomePage() {
           gridTemplateColumns: "repeat(2, 1fr)",
           gap: 12,
         }}>
-          {bestSellers.slice(0, 4).map((p) => (
-            <ProductCard key={p.id} product={p} />
-          ))}
+          {loading ? (
+            <div style={{ textAlign: "center", padding: 20, color: "#9e9e9e", gridColumn: "1 / -1" }}>
+              Loading products...
+            </div>
+          ) : bestSellers.length > 0 ? (
+            bestSellers.map((p) => <ProductCard key={p.id} product={p} />)
+          ) : (
+            <div style={{ textAlign: "center", padding: 20, color: "#9e9e9e", gridColumn: "1 / -1" }}>
+              No bestsellers yet.
+            </div>
+          )}
         </div>
       </section>
 
-      {/* ── ALL FEATURED ── */}
+      {/* ── NEW ARRIVALS ── */}
       <section style={{
         padding: "32px 20px",
         background: "#fafafa",
@@ -304,9 +377,17 @@ export default function HomePage() {
           gridTemplateColumns: "repeat(2, 1fr)",
           gap: 12,
         }}>
-          {featured.map((p) => (
-            <ProductCard key={p.id} product={p} />
-          ))}
+          {loading ? (
+            <div style={{ textAlign: "center", padding: 20, color: "#9e9e9e", gridColumn: "1 / -1" }}>
+              Loading products...
+            </div>
+          ) : featured.length > 0 ? (
+            featured.map((p) => <ProductCard key={p.id} product={p} />)
+          ) : (
+            <div style={{ textAlign: "center", padding: 20, color: "#9e9e9e", gridColumn: "1 / -1" }}>
+              No products yet. Check back soon!
+            </div>
+          )}
         </div>
       </section>
 

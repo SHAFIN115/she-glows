@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { Product } from "@/types";
 
 export default function ProductCard({ product }: { product: Product }) {
@@ -39,11 +40,22 @@ export default function ProductCard({ product }: { product: Product }) {
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
-            fontSize: 48,
+            fontSize: 40,
+            overflow: "hidden",
             position: "relative",
           }}
         >
-          {product.emoji || "📦"}
+          {product.image_url ? (
+            <Image
+              src={product.image_url}
+              alt={product.name}
+              fill
+              style={{ objectFit: "cover" }}
+              sizes="(max-width: 768px) 50vw, 200px"
+            />
+          ) : (
+            product.emoji || "📦"
+          )}
         </div>
         <div style={{ padding: "12px" }}>
           <div
@@ -73,7 +85,7 @@ export default function ProductCard({ product }: { product: Product }) {
           <div style={{ fontSize: 12, color: "#f9a825", marginBottom: 4 }}>
             {stars}
             <span style={{ color: "#9e9e9e", fontSize: 11, marginLeft: 4 }}>
-              ({product.reviewCount || 0})
+              ({product.review_count || 0})
             </span>
           </div>
           <div

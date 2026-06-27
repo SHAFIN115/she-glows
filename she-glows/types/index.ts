@@ -1,17 +1,17 @@
-// types/index.ts
 export interface Product {
   id: string;
   name: string;
   slug: string;
   price: number;
   category: string;
-  emoji: string;
+  emoji?: string;
   badge: string;
   tags: string[];
   stars: number;
-  reviewCount: number;    // ✅ Matches products.ts
-  shortDesc: string;      // ✅ Matches products.ts
+  review_count: number;    // Note: snake_case to match Supabase
+  short_desc: string;      // Note: snake_case to match Supabase
   description: string;
-  in_stock?: boolean;     // Optional, if you want to add later
-  image_url?: string;     // Optional, for future image support
+  image_url: string;
+  in_stock: boolean;
+  created_at?: string;
 }
