@@ -4,24 +4,9 @@ import { useState, useEffect } from "react";
 import { useSearchParams } from "next/navigation";
 import { Suspense } from "react";
 import { supabase } from "@/lib/supabase";
+import { Product } from "@/types";
 import ProductCard from "@/components/ProductCard";
 import Footer from "@/components/Footer";
-
-interface Product {
-  id: string;
-  name: string;
-  slug: string;
-  price: number;
-  category: string;
-  badge: string;
-  tags: string[];
-  stars: number;
-  review_count: number;
-  short_desc: string;
-  description: string;
-  image_url: string;
-  in_stock: boolean;
-}
 
 const CATEGORIES = ["Skincare", "Sunscreen", "Hair Care", "Makeup", "Lip Care", "Eye Care"];
 

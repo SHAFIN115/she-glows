@@ -13,10 +13,12 @@ export const products: Product[] = [
     badge: "Bestseller",
     tags: ["SPF 50+", "PA++++", "Korean", "Reef Safe"],
     stars: 5,
-    reviewCount: 48,
-    shortDesc: "Lightweight, non-greasy. No white cast.",
+    review_count: 48,
+    short_desc: "Lightweight, non-greasy. No white cast.",
     description:
       "Lightweight, non-greasy sunscreen with rice extract and probiotics. One of the top-rated K-beauty sunscreens — absorbs instantly and leaves a natural matte finish. No white cast. Perfect for Bangladesh's humid climate.",
+    image_url: "",
+    in_stock: true,
   },
   {
     id: "2",
@@ -28,10 +30,12 @@ export const products: Product[] = [
     badge: "Dermatologist Pick",
     tags: ["Dry Skin", "Fragrance Free", "Ceramides", "24h Hydration"],
     stars: 5,
-    reviewCount: 62,
-    shortDesc: "Ceramides + hyaluronic acid for dry skin.",
+    review_count: 62,
+    short_desc: "Ceramides + hyaluronic acid for dry skin.",
     description:
       "A rich, non-irritating moisturizing cream developed with dermatologists. Contains three essential ceramides and hyaluronic acid. Clinically tested for sensitive skin. Works for face and body.",
+    image_url: "",
+    in_stock: true,
   },
   {
     id: "3",
@@ -43,10 +47,12 @@ export const products: Product[] = [
     badge: "New Arrival",
     tags: ["96% Snail Mucin", "Repair", "Anti-aging", "Soothing"],
     stars: 4,
-    reviewCount: 31,
-    shortDesc: "Repair, hydrate, and fade acne marks.",
+    review_count: 31,
+    short_desc: "Repair, hydrate, and fade acne marks.",
     description:
       "Power essence with 96% snail secretion filtrate. Boosts hydration and speeds up skin recovery from acne, sun damage, and dullness. Loved by millions across Asia and globally.",
+    image_url: "",
+    in_stock: true,
   },
   {
     id: "4",
@@ -58,10 +64,12 @@ export const products: Product[] = [
     badge: "Fan Favorite",
     tags: ["Berry", "Overnight", "Hydrating", "Exfoliating"],
     stars: 5,
-    reviewCount: 94,
-    shortDesc: "Soft, plump lips every morning.",
+    review_count: 94,
+    short_desc: "Soft, plump lips every morning.",
     description:
       "Wake up to soft, plump lips. This overnight mask uses Berry Mix Complex to restore moisture while you sleep. Gently exfoliates dead skin — no more dry, flaky lips!",
+    image_url: "",
+    in_stock: true,
   },
   {
     id: "5",
@@ -73,10 +81,12 @@ export const products: Product[] = [
     badge: "Budget Pick",
     tags: ["Niacinamide", "Pores", "Brightening", "Oily Skin"],
     stars: 5,
-    reviewCount: 77,
-    shortDesc: "Minimize pores and reduce shine.",
+    review_count: 77,
+    short_desc: "Minimize pores and reduce shine.",
     description:
       "High-strength niacinamide serum that visibly minimizes pores and reduces shine. Also helps fade dark spots and hyperpigmentation. Fragrance-free and cruelty-free.",
+    image_url: "",
+    in_stock: true,
   },
   {
     id: "6",
@@ -88,10 +98,12 @@ export const products: Product[] = [
     badge: "Brightening",
     tags: ["Vitamin C", "Brightening", "Dark Spots", "Affordable"],
     stars: 4,
-    reviewCount: 53,
-    shortDesc: "Visibly reduces dark spots in 3 days.",
+    review_count: 53,
+    short_desc: "Visibly reduces dark spots in 3 days.",
     description:
       "Fast-absorbing brightening serum with 30x concentrated Vitamin C. Visibly reduces dark spots in 3 days. Suitable for all skin types.",
+    image_url: "",
+    in_stock: true,
   },
   {
     id: "7",
@@ -103,10 +115,12 @@ export const products: Product[] = [
     badge: "Frizz Control",
     tags: ["Anti-Frizz", "Shine", "Heat Protection"],
     stars: 4,
-    reviewCount: 29,
-    shortDesc: "Tames frizz and adds brilliant shine.",
+    review_count: 29,
+    short_desc: "Tames frizz and adds brilliant shine.",
     description:
       "Lightweight serum that tames frizz and adds brilliant shine. Apply on damp or dry hair for smooth, manageable results.",
+    image_url: "",
+    in_stock: true,
   },
   {
     id: "8",
@@ -118,10 +132,12 @@ export const products: Product[] = [
     badge: "Shade Range",
     tags: ["Oil Free", "24 Shades", "Natural Finish", "Buildable"],
     stars: 5,
-    reviewCount: 41,
-    shortDesc: "Natural finish, 24 shades, oil-free.",
+    review_count: 41,
+    short_desc: "Natural finish, 24 shades, oil-free.",
     description:
       "Buildable, natural-finish foundation in 24 shades. Fits and flatters your natural skin tone without looking cakey. Oil-free formula perfect for humid weather.",
+    image_url: "",
+    in_stock: true,
   },
   {
     id: "9",
@@ -133,10 +149,12 @@ export const products: Product[] = [
     badge: "Hyaluronic Acid",
     tags: ["Water Gel", "Oily Skin", "Non-comedogenic", "Oil Free"],
     stars: 5,
-    reviewCount: 85,
-    shortDesc: "48-hour hydration with zero greasiness.",
+    review_count: 85,
+    short_desc: "48-hour hydration with zero greasiness.",
     description:
       "The original water-gel moisturizer with hyaluronic acid that provides 48-hour hydration without greasiness. Perfect for oily or combination skin in hot weather.",
+    image_url: "",
+    in_stock: true,
   },
   {
     id: "10",
@@ -148,10 +166,12 @@ export const products: Product[] = [
     badge: "Vegan",
     tags: ["Matte", "Long Wearing", "Vegan", "30 Shades"],
     stars: 5,
-    reviewCount: 66,
-    shortDesc: "Velvety matte in 30+ bold shades.",
+    review_count: 66,
+    short_desc: "Velvety matte in 30+ bold shades.",
     description:
       "Velvety matte lip color in 30+ bold shades. Creamy, comfortable, and incredibly long-lasting — no drying out your lips.",
+    image_url: "",
+    in_stock: true,
   },
   {
     id: "11",
@@ -163,10 +183,12 @@ export const products: Product[] = [
     badge: "Pore Tightening",
     tags: ["Glycolic Acid", "Toner", "Exfoliating", "Sensitive"],
     stars: 4,
-    reviewCount: 22,
-    shortDesc: "Unclogs pores, evens skin texture.",
+    review_count: 22,
+    short_desc: "Unclogs pores, evens skin texture.",
     description:
       "Mild glycolic acid toner that unclogs pores and evens skin texture. Dermatologist-tested and suitable for sensitive skin.",
+    image_url: "",
+    in_stock: true,
   },
   {
     id: "12",
@@ -178,10 +200,12 @@ export const products: Product[] = [
     badge: "De-puffing",
     tags: ["Caffeine", "Dark Circles", "Puffiness", "Peptides"],
     stars: 4,
-    reviewCount: 18,
-    shortDesc: "Wakes up tired, puffy eyes fast.",
+    review_count: 18,
+    short_desc: "Wakes up tired, puffy eyes fast.",
     description:
       "Targets dark circles, puffiness, and fine lines around the eyes. Caffeine instantly wakes up tired-looking eyes.",
+    image_url: "",
+    in_stock: true,
   },
 ];
 

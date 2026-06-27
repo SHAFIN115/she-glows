@@ -3,25 +3,10 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { Product } from "@/types";
 import { supabase } from "@/lib/supabase";
 import ProductCard from "@/components/ProductCard";
 import Footer from "@/components/Footer";
-
-interface Product {
-  id: string;
-  name: string;
-  slug: string;
-  price: number;
-  category: string;
-  badge: string;
-  tags: string[];
-  stars: number;
-  review_count: number;
-  short_desc: string;
-  description: string;
-  image_url: string;
-  in_stock: boolean;
-}
 
 // Categories for the homepage
 const categories = [
