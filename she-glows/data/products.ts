@@ -16,7 +16,7 @@ export const products: Product[] = [
     review_count: 48,
     short_desc: "Lightweight, non-greasy. No white cast.",
     description:
-      "Lightweight, non-greasy sunscreen with rice extract and probiotics. One of the top-rated K-beauty sunscreens — absorbs instantly and leaves a natural matte finish. No white cast. Perfect for Bangladesh's humid climate.",
+      "Lightweight, non-greasy This is one with rice extract and probiotics. One of the top-rated K-beauty sunscreens — absorbs instantly and leaves a natural matte finish. No white cast. Perfect for Bangladesh's humid climate.",
     image_url: "",
     in_stock: true,
   },
