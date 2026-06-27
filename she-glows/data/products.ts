@@ -1,3 +1,5 @@
+// she-glows/data/products.ts
+
 import { Product } from "@/types";
 
 export const products: Product[] = [

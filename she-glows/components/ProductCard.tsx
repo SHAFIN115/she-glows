@@ -4,7 +4,7 @@ import Link from "next/link";
 import { Product } from "@/types";
 
 export default function ProductCard({ product }: { product: Product }) {
-  const stars = "★".repeat(product.stars) + "☆".repeat(5 - product.stars);
+  const stars = "★".repeat(Math.round(product.stars || 0)) + "☆".repeat(5 - Math.round(product.stars || 0));
 
   return (
     <Link
@@ -19,6 +19,7 @@ export default function ProductCard({ product }: { product: Product }) {
           overflow: "hidden",
           cursor: "pointer",
           transition: "all .15s",
+          height: "100%",
         }}
         onMouseEnter={(e) => {
           (e.currentTarget as HTMLDivElement).style.borderColor = "#c2185b";
@@ -38,43 +39,68 @@ export default function ProductCard({ product }: { product: Product }) {
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
-            fontSize: 40,
+            fontSize: 48,
+            position: "relative",
           }}
         >
-          {product.emoji}
+          {product.emoji || "📦"}
         </div>
-
-        <div style={{ padding: "10px 12px" }}>
+        <div style={{ padding: "12px" }}>
           <div
             style={{
-              display: "inline-block",
-              fontSize: 10,
-              background: "#fff8e1",
-              color: "#7a5800",
-              padding: "2px 8px",
-              borderRadius: 10,
-              marginBottom: 5,
-              fontWeight: 500,
+              fontSize: 11,
+              fontWeight: 600,
+              color: "#c2185b",
+              marginBottom: 2,
+              textTransform: "uppercase",
+              letterSpacing: "0.5px",
             }}
           >
-            {product.badge}
+            {product.category}
           </div>
           <div
             style={{
-              fontSize: 13,
+              fontSize: 14,
               fontWeight: 600,
-              lineHeight: 1.3,
-              marginBottom: 3,
+              marginBottom: 4,
+              whiteSpace: "nowrap",
+              overflow: "hidden",
+              textOverflow: "ellipsis",
             }}
           >
             {product.name}
           </div>
-          <div style={{ fontSize: 14, fontWeight: 700, color: "#c2185b" }}>
-            ৳{product.price.toLocaleString()}
+          <div style={{ fontSize: 12, color: "#f9a825", marginBottom: 4 }}>
+            {stars}
+            <span style={{ color: "#9e9e9e", fontSize: 11, marginLeft: 4 }}>
+              ({product.reviewCount || 0})
+            </span>
           </div>
-          <div style={{ fontSize: 11, color: "#f9a825", marginTop: 3 }}>
-            {stars}{" "}
-            <span style={{ color: "#9e9e9e" }}>({product.reviewCount})</span>
+          <div
+            style={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "space-between",
+            }}
+          >
+            <div style={{ fontSize: 16, fontWeight: 700, color: "#c2185b" }}>
+              ৳{product.price.toLocaleString()}
+            </div>
+            {product.badge && (
+              <span
+                style={{
+                  background: "#c2185b",
+                  color: "#fff",
+                  padding: "2px 10px",
+                  borderRadius: 10,
+                  fontSize: 9,
+                  fontWeight: 600,
+                  whiteSpace: "nowrap",
+                }}
+              >
+                {product.badge}
+              </span>
+            )}
           </div>
         </div>
       </div>
